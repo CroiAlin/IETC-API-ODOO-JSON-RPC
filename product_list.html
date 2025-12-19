@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Produits Odoo</title>
+    <link rel="stylesheet" href="product_list.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="config-section">
+            <h2>Configuration de connexion</h2>
+            <div class="form-group">
+                <label for="odoo-url">URL Odoo :</label>
+                <input type="text" id="odoo-url" value="http://localhost:8069" placeholder="http://localhost:8069">
+            </div>
+
+            <div class="form-group">
+                <label for="database">Base de données :</label>
+                <input type="text" id="database" value="odoo" placeholder="odoo">
+            </div>
+
+            <div class="form-group">
+                <label for="username">Utilisateur :</label>
+                <input type="text" id="username" value="admin" placeholder="admin">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" value="admin" placeholder="admin">
+            </div>
+
+            <button id="load-products-btn" class="btn-primary">Charger les produits</button>
+        </div>
+
+        <div id="loading-zone" class="loading-zone" style="display: none;">
+            <div class="spinner"></div>
+            <p>Chargement des produits...</p>
+        </div>
+
+        <div id="error-zone" class="error-zone" style="display: none;">
+            <h3>Erreur</h3>
+            <p id="error-message"></p>
+        </div>
+
+        <div id="stats-zone" class="stats-zone" style="display: none;">
+            <h3>Statistiques</h3>
+            <p>Nombre de produits : <strong id="product-count">0</strong></p>
+        </div>
+
+        <div id="products-grid" class="products-grid">
+        </div>
+    </div>
+    <script src="product_list.js"></script>
+</body>
+
+
+
+</html>
