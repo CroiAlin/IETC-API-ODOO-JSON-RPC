@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produits et Commandes - Odoo API</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/products.css">
+</head>
+
+<body>
+    <!-- En-tête -->
+    <header class="products-header">
+        <div class="header-left">
+            <h1>🛒 Gestion des Produits</h1>
+            <p id="user-info">Connecté en tant que <strong id="username"></strong></p>
+        </div>
+        <div class="header-right">
+            <div class="nav-tabs">
+                <a href="./products.html" class="nav-tab active">🛒 Produits</a>
+                <a href="./orders.html" class="nav-tab">📋 Commandes</a>
+            </div>
+            <div class="cart-badge">
+                <button class="btn btn-outline" id="toggle-cart-btn">
+                    🛒 Panier
+                </button>
+                <span class="badge" id="cart-count">0</span>
+            </div>
+            <button class="btn btn-danger" id="logout-btn">Déconnexion</button>
+        </div>
+    </header>
+
+    <!-- Contenu principal -->
+    <main class="products-content">
+        <!-- Section produits -->
+        <section class="products-section">
+            <h2>📦 Catalogue de Produits</h2>
+
+            <!-- Zone de chargement -->
+            <div id="loading-zone" class="loading-zone hidden">
+                <div class="spinner"></div>
+                <p>Chargement des produits...</p>
+            </div>
+
+            <!-- Zone d'erreur -->
+            <div id="error-zone" class="hidden">
+                <div class="alert alert-error">
+                    <span>⚠️</span>
+                    <span id="error-message"></span>
+                </div>
+            </div>
+
+            <!-- Grille de produits -->
+            <div id="products-grid" class="products-grid"></div>
+        </section>
+
+        <!-- Section panier -->
+        <aside class="cart-section" id="cart-section">
+            <h2>🛒 Votre Panier</h2>
+
+            <!-- Panier vide -->
+            <div id="cart-empty" class="cart-empty">
+                <div class="cart-empty-icon">🛒</div>
+                <p>Votre panier est vide</p>
+                <p class="text-secondary">Ajoutez des produits pour créer une commande</p>
+            </div>
+
+            <!-- Articles du panier -->
+            <div id="cart-items" class="cart-items hidden"></div>
+
+            <!-- Total -->
+            <div id="cart-total" class="cart-total hidden">
+                <div class="cart-total-row">
+                    <span class="cart-total-label">Total:</span>
+                    <span class="cart-total-amount" id="total-amount">0.00 €</span>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div id="cart-actions" class="cart-actions hidden">
+                <button class="btn btn-primary" id="create-order-btn">
+                    ✅ Créer la Commande
+                </button>
+                <button class="btn btn-outline" id="clear-cart-btn">
+                    🗑️ Vider le Panier
+                </button>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Modal de confirmation -->
+    <div id="order-modal" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-icon">✅</div>
+                <h2 class="modal-title">Commande Créée !</h2>
+            </div>
+            <div class="modal-body">
+                <p>Votre commande a été créée avec succès dans Odoo.</p>
+                <div class="alert alert-success mt-2">
+                    <strong>Numéro de commande:</strong> <span id="order-number"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="./orders.html" class="btn btn-outline">Voir mes commandes</a>
+                <button class="btn btn-primary" id="close-modal-btn">Continuer mes achats</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts JavaScript -->
+    <script src="../js/auth.js"></script>
+    <script src="../js/odoo-api.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/products-page.js"></script>
+</body>
+
+</html>
