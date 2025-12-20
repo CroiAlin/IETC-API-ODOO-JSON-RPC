@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - Odoo API</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="login-logo">🛒</div>
+                <h1>Connexion Odoo</h1>
+                <p>Connectez-vous pour accéder à vos produits et commandes</p>
+            </div>
+
+            <!-- Zone d'erreur -->
+            <div id="error-zone" class="hidden">
+                <div class="alert alert-error login-error">
+                    <span>⚠️</span>
+                    <span id="error-message"></span>
+                </div>
+            </div>
+
+            <!-- Formulaire de connexion -->
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label for="odoo-url">URL du serveur Odoo</label>
+                    <input type="url" id="odoo-url" value="http://localhost:8069" placeholder="http://localhost:8069"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="database">Base de données</label>
+                    <input type="text" id="database" value="OdooDB" placeholder="Nom de la base de données" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Email / Nom d'utilisateur</label>
+                    <input type="text" id="username" value="alin.croitoru@hainaut-ea.be"
+                        placeholder="votre.email@exemple.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" value="OdooAPI123+" placeholder="Votre mot de passe" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="login-btn">
+                    <span id="login-btn-text">Se connecter</span>
+                    <span id="login-spinner" class="hidden">⏳</span>
+                </button>
+            </form>
+
+            <div class="login-footer">
+                <p>Application de gestion Odoo - 2025</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts JavaScript -->
+    <script src="../js/auth.js"></script>
+    <script src="../js/login-page.js"></script>
+</body>
+
+</html>

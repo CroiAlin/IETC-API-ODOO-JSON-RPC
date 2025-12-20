@@ -1,12 +1,21 @@
 services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8069:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - web
   web:
     image: odoo:18.0
     depends_on:
       - mydb
-    ports:
-      - "8069:8069"
+    expose:
+      - "8069"
     volumes:
       - ./addons:/mnt/extra-addons
+      - ./odoo.conf:/etc/odoo/odoo.conf
     environment:
       - HOST=mydb
       - USER=odoo
@@ -22,4 +31,3 @@ services:
       - odoo-db-data:/var/lib/postgresql/data/pgdata
 volumes:
   odoo-db-data:
-

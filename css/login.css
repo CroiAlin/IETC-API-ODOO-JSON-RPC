@@ -1,0 +1,119 @@
+/* ===========================
+   PAGE DE CONNEXION
+   =========================== */
+
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: var(--spacing-md);
+}
+
+.login-card {
+    background: var(--bg-primary);
+    border-radius: 16px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    padding: var(--spacing-xl);
+    width: 100%;
+    max-width: 450px;
+    animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.login-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.login-header p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.login-logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--spacing-md);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+}
+
+.login-form {
+    margin-top: var(--spacing-lg);
+}
+
+.login-form .form-group input {
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+.login-form .btn-primary {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    margin-top: var(--spacing-md);
+}
+
+.login-footer {
+    margin-top: var(--spacing-lg);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+/* Message d'erreur spécifique au login */
+.login-error {
+    margin-bottom: var(--spacing-md);
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    75% {
+        transform: translateX(10px);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .login-card {
+        padding: var(--spacing-lg);
+    }
+
+    .login-header h1 {
+        font-size: 1.5rem;
+    }
+}
