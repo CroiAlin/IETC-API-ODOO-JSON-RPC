@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suivi des Commandes - Odoo API</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/orders.css">
+</head>
+
+<body>
+    <!-- En-tête -->
+    <header class="orders-header">
+        <div class="header-left">
+            <h1>📋 Suivi des Commandes</h1>
+            <p id="user-info">Connecté en tant que <strong id="username"></strong></p>
+        </div>
+        <div class="header-right">
+            <div class="nav-tabs">
+                <a href="./products.html" class="nav-tab">🛒 Produits</a>
+                <a href="./orders.html" class="nav-tab active">📋 Commandes</a>
+            </div>
+            <button class="btn btn-danger" id="logout-btn">Déconnexion</button>
+        </div>
+    </header>
+
+    <!-- Contenu principal -->
+    <main class="orders-content">
+        <section class="orders-section">
+            <h2>Mes Commandes</h2>
+
+            <!-- Filtres -->
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Toutes</button>
+                <button class="filter-btn" data-filter="draft">Brouillon</button>
+                <button class="filter-btn" data-filter="sent">Envoyée</button>
+                <button class="filter-btn" data-filter="sale">Confirmée</button>
+                <button class="filter-btn" data-filter="done">Terminée</button>
+                <button class="filter-btn" data-filter="cancel">Annulée</button>
+            </div>
+
+            <!-- Zone de chargement -->
+            <div id="loading-zone" class="loading-zone hidden">
+                <div class="spinner"></div>
+                <p>Chargement des commandes...</p>
+            </div>
+
+            <!-- Zone d'erreur -->
+            <div id="error-zone" class="hidden">
+                <div class="alert alert-error">
+                    <span>⚠️</span>
+                    <span id="error-message"></span>
+                </div>
+            </div>
+
+            <!-- État vide -->
+            <div id="empty-state" class="empty-state hidden">
+                <div class="empty-state-icon">📦</div>
+                <h3>Aucune commande</h3>
+                <p>Vous n'avez pas encore passé de commande</p>
+                <a href="./products.html" class="btn btn-primary mt-3">Parcourir les produits</a>
+            </div>
+
+            <!-- Liste des commandes -->
+            <div id="orders-list" class="orders-list"></div>
+        </section>
+    </main>
+
+    <!-- Modal détails de commande -->
+    <div id="order-details-modal" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-order-number"></h2>
+            </div>
+            <div class="modal-body">
+                <div class="order-details">
+                    <div class="order-info">
+                        <div class="order-info-item">
+                            <span class="order-info-label">Client</span>
+                            <span class="order-info-value" id="modal-partner"></span>
+                        </div>
+                        <div class="order-info-item">
+                            <span class="order-info-label">Date</span>
+                            <span class="order-info-value" id="modal-date"></span>
+                        </div>
+                        <div class="order-info-item">
+                            <span class="order-info-label">Statut</span>
+                            <span class="order-info-value" id="modal-status"></span>
+                        </div>
+                        <div class="order-info-item">
+                            <span class="order-info-label">Total</span>
+                            <span class="order-info-value order-total" id="modal-total"></span>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-3 mb-2">Lignes de commande</h3>
+                    <div id="modal-lines" class="order-lines"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="close-modal-btn">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts JavaScript -->
+    <script src="../js/auth.js"></script>
+    <script src="../js/odoo-api.js"></script>
+    <script src="../js/orders-page.js"></script>
+</body>
+
+</html>
